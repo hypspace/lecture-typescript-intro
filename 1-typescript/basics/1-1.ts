@@ -22,3 +22,8 @@ const obj2: { name: string; age: number } = {
 
 // - 진리값
 const show: boolean = true
+
+// - 함수
+function sum(a: number, b: number): number {
+  return a + b
+}
