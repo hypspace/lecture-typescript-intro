@@ -27,3 +27,8 @@ const show: boolean = true
 function sum(a: number, b: number): number {
   return a + b
 }
+
+// : 옵셔널 파라미터
+function log(text?: string) {
+  console.log(text ? `출력: ${text}` : '출력')
+}
