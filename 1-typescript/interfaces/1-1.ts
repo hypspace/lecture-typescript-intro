@@ -1,4 +1,4 @@
-// TS 인터페이스 정의
+// TS 인터페이스
 
 // 변수
 interface User {
