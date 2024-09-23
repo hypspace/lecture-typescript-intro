@@ -71,3 +71,56 @@ const stringDropdown = new MyDropdown<string>(['a', 'b', 'c'])
 const numberDropdown = new MyDropdown<number>([1, 2, 3])
 stringDropdown.selectItem('a') // selectItem(): a
 numberDropdown.selectItem(1) // selectItem(): 1
+
+// - 제네릭 타입 제한(=제약)
+
+// : 예문1 - 기본
+function getValueLength1<T>(value: T): number {
+  return value.length // Error!
+}
+function getValueLength2<T>(value: T[]): number {
+  return value.length
+}
+getValueLength2(1) // Error!
+
+// : 예문2 - 정의된 타입
+function logLength<T extends { length: number }>(item: T): void {
+  console.log(item.length)
+}
+logLength('hello') // 5
+logLength([1, 2, 3]) // 3
+logLength(123) // Error!: The 'number' type does not have a 'length' attribute.
+
+function logTextLength<T>(text: T[]): void {
+  console.log(text.length)
+}
+logTextLength('a') // Error!
+
+// : 예문2 - keyof
+interface ShoppingItem {
+  type: string
+  name: string
+  price: number
+}
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
+  return itemOption
+}
+getShoppingItemOption('10') // Error!
+getShoppingItemOption(10) // Error!
+getShoppingItemOption('type')
+getShoppingItemOption('name')
+getShoppingItemOption('price')
+
+interface Person {
+  name: string
+  age: number
+}
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key]
+}
+const person: Person = {
+  name: 'wang',
+  age: 21,
+}
+const myName = getProperty(person, 'name') // wang
+const myAge = getProperty(person, 'age') // 21
