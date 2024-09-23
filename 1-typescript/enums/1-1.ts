@@ -20,3 +20,13 @@ enum Level {
 }
 
 let game: Level.Beginner // 0
+
+// - 문자형
+enum Color {
+  red = '#f00',
+  white = '#fff',
+}
+
+let myColor: Color
+myColor = Color.red // #f00
+myColor = Color.white // #fff
