@@ -41,3 +41,19 @@ const obj: StringRegexDictionary = {
 }
 
 // obj['cssFile'] = 'a' // Error!
+
+// - 확장 상속
+interface Person {
+  name: string
+  age: number
+}
+
+interface Developer extends Person {
+  skills: Array<string>
+}
+
+const wang21: Developer = {
+  name: 'wang',
+  age: 21,
+  skills: ['JS', 'TS', 'Node'],
+}
