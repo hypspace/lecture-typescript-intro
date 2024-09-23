@@ -30,3 +30,21 @@ enum Color {
 let myColor: Color
 myColor = Color.red // #f00
 myColor = Color.white // #fff
+
+// 활용 사례
+enum HttpStatus {
+  ok = 200,
+  notFount = 404,
+  internalServerError = 500,
+}
+
+function handleResponse(status: HttpStatus): string {
+  switch (status) {
+    case HttpStatus.ok:
+      return 'Request was successful'
+    case HttpStatus.notFount:
+      return 'Request not found'
+    case HttpStatus.internalServerError:
+      return 'An error occurred on the server'
+  }
+}
