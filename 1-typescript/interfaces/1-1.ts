@@ -15,3 +15,10 @@ interface GetUsername {
 function getUsername(user: User) {
   return user.name
 }
+
+interface stringArray {
+  [index: number]: string
+}
+
+const arr: stringArray = ['A', 'B', 'C']
+arr[0] = 10
