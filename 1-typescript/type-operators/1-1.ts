@@ -12,5 +12,14 @@ interface Female {
 }
 
 function myCharter(charter: Male | Female): void {
-  // charter.type만 자동완성 제공
+  charter.type // charter.type만 자동완성 제공
+  charter.hair // Error!
+  charter.hairLod // Error!
+}
+
+// - 인터섹션
+function myCharter2(charter: Male & Female): void {
+  charter.type
+  charter.hair
+  charter.hairLod
 }
