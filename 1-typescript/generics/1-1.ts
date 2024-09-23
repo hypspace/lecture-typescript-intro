@@ -28,14 +28,15 @@ logText<number>(1).toString()
 
 // - 클래스에서 제네릭
 class Box<T> {
-  #items: T[] = []
+  // #items: T[] = []
+  private items: T[] = []
 
   getItems(): T[] {
-    return this.#items
+    return this.items
   }
 
   add(item: T): void {
-    this.#items.push(item)
+    this.items.push(item)
   }
 }
 
@@ -48,3 +49,25 @@ const stringBox = new Box<string>()
 stringBox.add('a')
 stringBox.add('b')
 console.log(stringBox.getItems()) // [a, b]
+
+// - 인터페이스에서 제네릭
+interface Dropdown<T> {
+  items: T[]
+  selectItem: (item: T) => void
+}
+
+class MyDropdown<T> implements Dropdown<T> {
+  items: T[]
+  constructor(items: T[]) {
+    this.items = items
+  }
+
+  selectItem(item: T): void {
+    console.log('selectItem(): ', item)
+  }
+}
+
+const stringDropdown = new MyDropdown<string>(['a', 'b', 'c'])
+const numberDropdown = new MyDropdown<number>([1, 2, 3])
+stringDropdown.selectItem('a') // selectItem(): a
+numberDropdown.selectItem(1) // selectItem(): 1
