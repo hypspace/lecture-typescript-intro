@@ -1,6 +1,6 @@
 // TS 제네릭
 
-// - 함수에서 제네릭 사용
+// - 함수에서 제네릭
 function getValue<T>(value: T): T {
   return value
 }
@@ -25,3 +25,26 @@ function logText<T>(text: T): T {
 
 logText<string>('').charAt(0) // 결과값 추론을 통한 API 제공
 logText<number>(1).toString()
+
+// - 클래스에서 제네릭
+class Box<T> {
+  #items: T[] = []
+
+  getItems(): T[] {
+    return this.#items
+  }
+
+  add(item: T): void {
+    this.#items.push(item)
+  }
+}
+
+const numberBox = new Box<number>()
+numberBox.add(1)
+numberBox.add(2)
+console.log(numberBox.getItems()) // [1, 2]
+
+const stringBox = new Box<string>()
+stringBox.add('a')
+stringBox.add('b')
+console.log(stringBox.getItems()) // [a, b]
