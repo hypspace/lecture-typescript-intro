@@ -30,3 +30,9 @@ if (isDeveloper(myIntroduce)) {
 } else {
   myIntroduce.age
 }
+
+// - typeof 활용한 타입 가드
+function getExample(value: number | string) {
+  if (typeof value === 'string') return value.toUpperCase()
+  return console.log(value.toFixed(2))
+}
